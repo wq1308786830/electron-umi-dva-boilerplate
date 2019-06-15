@@ -1,4 +1,5 @@
 import styles from './index.less';
+import { Link } from 'umi';
 
 
 export default function() {
@@ -11,6 +12,7 @@ export default function() {
           <a href="https://umijs.org/guide/getting-started.html">
             Getting Started
           </a>
+          <Link to="/products">Go to list page</Link>
         </li>
       </ul>
     </div>

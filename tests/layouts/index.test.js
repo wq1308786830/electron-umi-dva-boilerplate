@@ -1,4 +1,4 @@
-import BasicLayout from '..';
+import BasicLayout from '@/layouts';
 import renderer from 'react-test-renderer';
 
 describe('Layout: BasicLayout', () => {

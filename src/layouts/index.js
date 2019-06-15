@@ -1,14 +1,12 @@
 import React from 'react';
-import styles from './index.less';
+import withRouter from 'umi/withRouter';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-function BasicLayout(props) {
-  return (
-    <div className={styles.normal}>
-      <header onClick={window.history.goBack}>返回</header>
-      <h1 className={styles.title}>Yay! Welcome to umi!</h1>
-      {props.children}
-    </div>
-  );
-}
-
-export default BasicLayout;
+export default withRouter(
+  ({ location, children }) =>
+    <TransitionGroup>
+      <CSSTransition key={location.pathname} classNames="fade" timeout={200}>
+        {children}
+      </CSSTransition>
+    </TransitionGroup>,
+);

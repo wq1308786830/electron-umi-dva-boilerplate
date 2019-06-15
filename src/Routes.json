@@ -1,0 +1,12 @@
+[
+  {
+    "path": "/",
+    "exact": true,
+    "component": "index"
+  },
+  {
+    "path": "/products",
+    "exact": true,
+    "component": "products"
+  }
+]
