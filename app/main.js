@@ -1,7 +1,13 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron');
+
+const { app, BrowserWindow, ipcMain, webContents } = require('electron');
 const path = require('path');
 
+
+
+ipcMain.on("print", (event, arg) => {
+  webContents.print({silent: true, printBackground: true});
+});
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
