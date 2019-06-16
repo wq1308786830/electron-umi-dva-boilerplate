@@ -1,4 +1,3 @@
-
 // ref: https://umijs.org/config/
 export default {
   treeShaking: true,
@@ -27,4 +26,11 @@ export default {
       },
     }],
   ],
-}
+  proxy: {
+    '/api': {
+      'target': 'https://nei.netease.com/api/apimock/1d150f1ef158dbd6bb3b95fe12d5400a/',
+      'changeOrigin': true,
+      'pathRewrite': { '^/api': '/api' },
+    },
+  },
+};
