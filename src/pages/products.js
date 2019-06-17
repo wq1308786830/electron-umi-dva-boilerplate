@@ -35,7 +35,6 @@ class Products extends React.Component {
       pdf: '/Users/russell/Desktop/Tower--产前筛查管理系统sy3.0.3-3.pdf',
     };
     ipcRenderer.send('print', printInfo);
-
   }
 
   render() {

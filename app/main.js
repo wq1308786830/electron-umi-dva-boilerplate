@@ -4,6 +4,12 @@ const path = require('path');
 const exec = require('child_process').exec;
 const { app, BrowserWindow, ipcMain } = require('electron');
 
+process.env.NODE_ENV = 'development';
+
+ipcMain.on('reload', async (event, arg) => {
+  console.log(arg);
+});
+
 /**
  * 监听渲染进程的打印请求
  */

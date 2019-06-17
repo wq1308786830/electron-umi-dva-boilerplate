@@ -2,7 +2,7 @@
   "private": true,
   "main": "app/main.js",
   "scripts": {
-    "app-dev": "WATCH_FILES=1 umi build && electron .",
+    "app-dev": "umi dev & electron .",
     "electron-dev": "NODE_ENV=development electron .",
     "start": "umi dev",
     "build": "umi build",

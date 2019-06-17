@@ -1,12 +1,11 @@
 // ref: https://umijs.org/config/
-import { join } from 'path';
 export default {
   treeShaking: true,
   publicPath: './',
   history: 'memory',
   hash: true,
   plugins: [
-    join(__dirname, '..', require('../package').main || 'my_plugins.js'),
+    './my_plugins.js',
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
       antd: true,
