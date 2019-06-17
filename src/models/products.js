@@ -20,7 +20,6 @@ export default {
      * @returns {IterableIterator<*>}
      */* fetch(action, { call, put }) {
       const { data } = yield call(productsService.fetch);
-      console.log(data);
       yield put({ type: 'getList', payload: data });
     },
   },

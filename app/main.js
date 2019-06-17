@@ -1,12 +1,35 @@
 // Modules to control application life and create native browser window
 
-const { app, BrowserWindow, ipcMain, webContents } = require('electron');
 const path = require('path');
+const exec = require('child_process').exec;
+const { app, BrowserWindow, ipcMain } = require('electron');
 
-
-
-ipcMain.on("print", (event, arg) => {
-  webContents.print({silent: true, printBackground: true});
+/**
+ * 监听渲染进程的打印请求
+ */
+ipcMain.on('print', async (event, arg) => {
+  switch (process.platform) {
+    case 'darwin':
+    case 'linux':
+      await exec('lp ' + arg.pdf, (e) => {
+        if (e) throw e;
+      });
+      event.reply('asynchronous-reply', 'print done!');
+      break;
+    case 'win32':
+      await exec('ptp ' + arg.pdf, {
+        windowsHide: true,
+      }, (e) => {
+        if (e) throw e;
+      });
+      event.reply('asynchronous-reply', 'print done!');
+      break;
+    default:
+      event.reply('asynchronous-reply', 'print failed');
+      throw new Error(
+        'Platform not supported.',
+      );
+  }
 });
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -27,7 +50,7 @@ const installExtensions = async () => {
 
 
 async function createWindow() {
-  if (true) {
+  if (process.env.NODE_ENV === 'development') {
     await installExtensions();
   }
 
@@ -42,11 +65,13 @@ async function createWindow() {
   });
 
   // and load the index.html of the app.
-  // mainWindow.loadURL('http://localhost:8000/');
-  mainWindow.loadFile(path.resolve(path.join(__dirname, '../dist/index.html')));
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (process.env.NODE_ENV === 'development') {
+    mainWindow.loadURL('http://localhost:8000/');
+    // Open the DevTools only if in development mode.
+    mainWindow.webContents.openDevTools();
+  } else {
+    mainWindow.loadFile(path.resolve(path.join(__dirname, '../dist/index.html')));
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
