@@ -2,9 +2,8 @@
 
 const path = require('path');
 const exec = require('child_process').exec;
+const reload = require('electron-reload');
 const { app, BrowserWindow, ipcMain } = require('electron');
-
-process.env.NODE_ENV = 'development';
 
 const isDev = process.env.NODE_ENV === 'development';
 
@@ -56,11 +55,8 @@ const installExtensions = async () => {
   }
 };
 
-
 async function createWindow() {
-  if (process.env.NODE_ENV === 'development') {
-    await installExtensions();
-  }
+  isDev && await installExtensions();
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -89,6 +85,12 @@ async function createWindow() {
     mainWindow = null;
   });
 }
+
+// hot reload
+isDev && reload(__dirname, {
+  electron: require(`${__dirname}/../node_modules/electron`),
+  ignored: /node_modules|[\/\\]\./,
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

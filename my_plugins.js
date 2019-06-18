@@ -7,9 +7,9 @@ module.exports = function(api, options) {
   // Example: output the webpack config
   api.onDevCompileDone(({ isFirstCompile, stats }) => {
     // handle with stats
-    console.log('isFirstCompile', isFirstCompile);
+    console.log('electron start!');
     if (isFirstCompile) {
-      exec('npm run electron-dev');
+      // exec('npm run electron-dev');
     }
   });
 };
