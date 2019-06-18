@@ -32,7 +32,7 @@ class Products extends React.Component {
   printFile() {
     let printInfo = {
       //pdfUrl是网络PDF文件的地址
-      pdf: '/Users/russell/Desktop/Tower--产前筛查管理系统sy3.0.3-3.pdf',
+      pdf: './ReferenceCard.pdf',
     };
     ipcRenderer.send('print', printInfo);
   }

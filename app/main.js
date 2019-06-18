@@ -2,7 +2,6 @@
 
 const path = require('path');
 const exec = require('child_process').exec;
-const reload = require('electron-reload');
 const { app, BrowserWindow, ipcMain } = require('electron');
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -24,7 +23,7 @@ ipcMain.on('print', async (event, arg) => {
       event.reply('asynchronous-reply', 'print done!');
       break;
     case 'win32':
-      await exec('ptp ' + arg.pdf, {
+      await exec('print ' + arg.pdf, {
         windowsHide: true,
       }, (e) => {
         if (e) throw e;
@@ -87,7 +86,7 @@ async function createWindow() {
 }
 
 // hot reload
-isDev && reload(__dirname, {
+isDev && require('electron-reload')(__dirname, {
   electron: require(`${__dirname}/../node_modules/electron`),
   ignored: /node_modules|[\/\\]\./,
 });
