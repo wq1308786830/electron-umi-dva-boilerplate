@@ -2,7 +2,6 @@
   "private": true,
   "main": "app/main.js",
   "scripts": {
-    "app-dev": "umi dev & electron .",
     "electron-dev": "NODE_ENV=development electron .",
     "start": "umi dev",
     "build": "umi build",

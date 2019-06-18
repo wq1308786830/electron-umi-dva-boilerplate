@@ -6,6 +6,8 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 
 process.env.NODE_ENV = 'development';
 
+const isDev = process.env.NODE_ENV === 'development';
+
 ipcMain.on('reload', async (event, arg) => {
   console.log(arg);
 });
@@ -71,7 +73,7 @@ async function createWindow() {
   });
 
   // and load the index.html of the app.
-  if (process.env.NODE_ENV === 'development') {
+  if (isDev) {
     mainWindow.loadURL('http://localhost:8000/');
     // Open the DevTools only if in development mode.
     mainWindow.webContents.openDevTools();
