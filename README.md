@@ -40,7 +40,7 @@ $ npm run pack:win
 
 ## License
 
-MIT © [electron-umi-dva-boilerplate](https://github.com/wq1308786830/electron-umi-dva-boilerplate-template)
+MIT © [electron-umi-dva-boilerplate](https://github.com/wq1308786830/electron-umi-dva-boilerplate)
 
 [chrome-img]: https://img.shields.io/badge/chrome-%5E73.0-redgreen.svg
 [chrome-url]: https://www.google.com/intl/zh-CN/chrome/
