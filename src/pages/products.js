@@ -1,9 +1,8 @@
+import { Link } from 'umi';
 import { connect } from 'dva';
 import React from 'react';
-import styles from './products.css';
 import ProductList from '@/components/ProductList';
-import { Link } from 'umi';
-import { Button } from 'antd';
+import styles from './products.less';
 
 const { ipcRenderer } = window.require('electron');
 
@@ -11,6 +10,7 @@ class Products extends React.Component {
   constructor(props) {
     super(props);
     this.props = props;
+    this.ipcRenderer = ipcRenderer;
     this.handleDelete = this.handleDelete.bind(this);
     this.printFile = this.printFile.bind(this);
   }
@@ -29,22 +29,21 @@ class Products extends React.Component {
     });
   }
 
-  printFile() {
+  printFile(fileUrl) {
     let printInfo = {
       //pdfUrl是网络PDF文件的地址
-      pdf: './ReferenceCard.pdf',
+      pdf: fileUrl,
     };
-    ipcRenderer.send('print', printInfo);
+    this.ipcRenderer.send('print', printInfo);
   }
 
   render() {
     const { products } = this.props;
     return (
       <div className={styles.normal}>
+        <Link to={'/'}>&lt;&nbsp;返回</Link>
         <h2>List of Products</h2>
-        <Button onClick={this.printFile}>打印</Button>
-        <ProductList onDelete={this.handleDelete} products={products}/>
-        <Link to={'/'}>返回首页</Link>
+        <ProductList onDelete={this.handleDelete} onPrint={this.printFile} products={products}/>
       </div>
     );
   }

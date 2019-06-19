@@ -6,24 +6,23 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 
 const isDev = process.env.NODE_ENV === 'development';
 
-ipcMain.on('reload', async (event, arg) => {
-  console.log(arg);
-});
-
 /**
  * 监听渲染进程的打印请求
  */
 ipcMain.on('print', async (event, arg) => {
+  // todo:下载网络文件到本地打印
+  arg.pdf = `${__dirname}/ReferenceCard.pdf`;
+  const fileUrl = arg.pdf;
   switch (process.platform) {
     case 'darwin':
     case 'linux':
-      await exec('lp ' + arg.pdf, (e) => {
+      await exec('lp ' + fileUrl, (e) => {
         if (e) throw e;
       });
       event.reply('asynchronous-reply', 'print done!');
       break;
     case 'win32':
-      await exec('print ' + arg.pdf, {
+      await exec('print ' + fileUrl, {
         windowsHide: true,
       }, (e) => {
         if (e) throw e;
@@ -31,7 +30,7 @@ ipcMain.on('print', async (event, arg) => {
       event.reply('asynchronous-reply', 'print done!');
       break;
     default:
-      event.reply('asynchronous-reply', 'print failed');
+      event.reply('asynchronous-reply', 'print failed!');
       throw new Error(
         'Platform not supported.',
       );
@@ -59,7 +58,7 @@ async function createWindow() {
 
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 800,
+    width: 1000,
     height: 600,
     webPreferences: {
       nodeIntegration: true,

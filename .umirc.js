@@ -13,7 +13,7 @@ export default {
         immer: true,
       },
       dynamicImport: false,
-      title: 'test_umi',
+      title: 'electron-umi-dva-boilerplate',
       dll: false,
 
       routes: {

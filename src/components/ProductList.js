@@ -1,6 +1,6 @@
 import { Button, Popconfirm, Table } from 'antd';
 
-const ProductList = ({ onDelete, products }) => {
+const ProductList = ({ onDelete, onPrint, products }) => {
   const columns = [
     {
       title: 'Name',
@@ -13,6 +13,14 @@ const ProductList = ({ onDelete, products }) => {
           <Popconfirm title="Delete?" onConfirm={() => onDelete(record.id)}>
             <Button>Delete</Button>
           </Popconfirm>
+        );
+      },
+    },
+    {
+      title: 'Print Action',
+      render: (text, record) => {
+        return (
+          <Button onClick={() => onPrint(record.fileUrl)}>Print</Button>
         );
       },
     },

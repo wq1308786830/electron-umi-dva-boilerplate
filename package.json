@@ -1,11 +1,11 @@
 {
-  "name": "electron-umi-dva-boilerplate-template",
+  "name": "electron-umi-dva-boilerplate",
   "version": "0.0.0",
-  "description": "electron-umi-dva-boilerplate-template",
+  "description": "electron-umi-dva-boilerplate",
   "private": false,
   "main": "app/main.js",
   "build": {
-    "appId": "com.electron.electron-umi-dva-boilerplate-template",
+    "appId": "com.electron.electron-umi-dva-boilerplate",
     "mac": {
       "category": "your.app.category.type"
     }

@@ -1,6 +1,5 @@
-import styles from './index.less';
 import { Link } from 'umi';
-
+import styles from './index.less';
 
 export default function() {
   return (
@@ -8,11 +7,6 @@ export default function() {
       <div className={styles.welcome} />
       <ul className={styles.list}>
         <li>To get started, edit <code>src/pages/index.js</code> and save to reload.</li>
-        <li>
-          <a href="https://umijs.org/guide/getting-started.html">
-            Getting Started
-          </a>
-        </li>
         <li>
           <Link to="/products">Go to list page</Link>
         </li>
