@@ -11,6 +11,7 @@
     }
   },
   "scripts": {
+    "postinstall": "electron-builder install-app-deps",
     "app-dev": "concurrently \"npm run start\" \"wait-on http://localhost:8000 && npm run electron-dev\"",
     "electron-dev": "cross-env NODE_ENV=development electron .",
     "electron-prod": "cross-env NODE_ENV=production electron .",
@@ -19,6 +20,7 @@
     "clean": "rimraf dist",
     "pack:mac": "npm run clean && npm run build && npm run private:build:mac",
     "pack:win": "npm run clean && npm run build && npm run private:build:win",
+    "pack:linux": "npm run clean && npm run build && npm run private:build:linux",
     "private:build:all": "electron-builder -mwl",
     "private:build:mac": "electron-builder --mac",
     "private:build:win": "electron-builder -c.extraMetadata.main=app/main.js --win --x64",

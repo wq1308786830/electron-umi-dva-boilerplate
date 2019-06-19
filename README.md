@@ -1,25 +1,6 @@
-<img src="internals/img/erb-banner.png" width="100%" />
-
-<br>
-
 <p>
-  Electron Umi Dva Boilerplate uses <a href="http://electron.atom.io/">Electron</a>, <a href="https://umijs.org/">UmiJS</a>, <a href="https://dvajs.com/">DvaJS</a> and <a href="https://github.com/gaearon/react-hot-loader">React Hot Loader</a> for rapid application development (HMR).
+  Electron Umi Dva Boilerplate 使用的技术包括 <a href="http://electron.atom.io/">Electron</a>, <a href="https://umijs.org/">UmiJS</a>, <a href="https://dvajs.com/">DvaJS</a> 并支持HMR热加载.
 </p>
-
-<br>
-
-<div align="center">
-  <a href="https://facebook.github.io/react/"><img src="./internals/img/react-padded-90.png" /></a>
-  <a href="https://webpack.github.io/"><img src="./internals/img/webpack-padded-90.png" /></a>
-  <a href="http://redux.js.org/"><img src="./internals/img/redux-padded-90.png" /></a>
-  <a href="https://github.com/ReactTraining/react-router"><img src="./internals/img/react-router-padded-90.png" /></a>
-  <a href="https://flowtype.org/"><img src="./internals/img/flow-padded-90.png" /></a>
-  <a href="http://eslint.org/"><img src="./internals/img/eslint-padded-90.png" /></a>
-  <a href="https://facebook.github.io/jest/"><img src="./internals/img/jest-padded-90.png" /></a>
-  <a href="https://yarnpkg.com/"><img src="./internals/img/yarn-padded-90.png" /></a>
-</div>
-
-<hr />
 <br />
 
 <div align="center">
@@ -29,46 +10,37 @@
 [![Electron Version][electron-img]][electron-url]
 [![Umi Version][umi-img]][umi-url]
 
-
-
 </div>
 
-## Install
-First, clone the repo via git:
+## 安装依赖
 
 ```bash
-git clone --depth 1 --single-branch --branch master https://github.com/wq1308786830/electron-umi-dva-boilerplate-template.git your-project-name
-```
-
-And then install the dependencies with npm.
-
-```bash
-$ cd your-project-name
 $ npm i
 ```
 
-## Starting Development
+## 开始开发
 
-Start the app in the `dev` environment. This starts the renderer process in [**hot-module-replacement**](https://webpack.js.org/guides/hmr-react/) mode and starts a webpack dev server that sends hot updates to the renderer process:
+以开发环境运行支持热加载，分为electron热加载和webpack热加载：
 
 ```bash
-$ npm run dev
+$ npm run app-dev
 ```
 
-## Packaging for Production
+## 打包生产模式
 
-To package apps for the local platform:
+通过electron-builder打包，过程中会下载打包所必须的资源文件请确保网络通畅，如打包windows安装文件:
 
 ```bash
-$ npm run package
+$ npm run pack:win
 ```
 
 ## Maintainers
 
 - [Russell](https://github.com/wq1308786830)
+
 ## License
 
-MIT © [electron-umi-dva-boilerplate-template](https://github.com/wq1308786830/electron-umi-dva-boilerplate-template)
+MIT © [electron-umi-dva-boilerplate](https://github.com/wq1308786830/electron-umi-dva-boilerplate-template)
 
 [chrome-img]: https://img.shields.io/badge/chrome-%5E73.0-redgreen.svg
 [chrome-url]: https://www.google.com/intl/zh-CN/chrome/
